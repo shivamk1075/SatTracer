@@ -365,7 +365,7 @@ if st.session_state.get("trigger_analysis") and st.session_state.get("analysis_p
     if matched_data is not None:
         st.toast("Fetched instantly from local dataset.")
         
-        if run_mode.startswith("Bulk Scan"):
+        if run_mode.startswith("Scan (All"):
             matched_data = matched_data.set_index('target_category').reindex(ordered_categories).reset_index()
             raw_scores = matched_data['viability_score_0_1'].fillna(0).tolist()
             
@@ -389,7 +389,7 @@ if st.session_state.get("trigger_analysis") and st.session_state.get("analysis_p
         st.session_state.trigger_analysis = False
 
     else:
-        if run_mode.startswith("Bulk Scan"):
+        if run_mode.startswith("Scan (All"):
             with st.status("Executing Geospatial Analysis Pipeline...", expanded=True) as status:
                 st.write("Extracting spatial features and competitor distribution...")
                 try:
