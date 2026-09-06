@@ -16,7 +16,20 @@ from streamlit_searchbox import st_searchbox
 import base64  # <-- ADD THIS
 
 # --- 1. PAGE SETUP & STYLING ---
-st.set_page_config(page_title="SatTracer | Viability Engine", layout="wide")
+st.set_page_config(page_title="SatTracer | Viability Engine", layout="wide", menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': None
+    })
+
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # --- NEW: BACKGROUND IMAGE FUNCTION ---
 def set_background(image_path):
