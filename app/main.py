@@ -1,5 +1,5 @@
 # VERSION 2
-
+from pathlib import Path
 import os
 from dotenv import load_dotenv
 import json
@@ -90,7 +90,16 @@ def set_background(image_path):
 
 # CALL THE FUNCTION HERE:
 # Replace the string below with the actual path to your image
-set_background("data\\bgr.png")
+
+
+
+# Recommended: resolves relative to current file's directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+BG_IMAGE_PATH = BASE_DIR / "data" / "bgr.png"
+
+# Or simply use forward slashes:
+# BG_IMAGE_PATH = "data/bgr.png"
+set_background(BG_IMAGE_PATH)
 
 # --- LOAD ENVIRONMENT VARIABLES ---
 load_dotenv()
